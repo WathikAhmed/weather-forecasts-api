@@ -4,7 +4,7 @@
   "description": "An architectural style for an application program interface that uses HTTP requests to access and use data.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js" 
   },
   "repository": {
     "type": "git",
