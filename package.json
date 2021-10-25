@@ -11,13 +11,14 @@
     "url": "git+https://github.com/WathikAhmed/REST-API.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Wathik Ahmed",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/WathikAhmed/REST-API/issues"
   },
   "homepage": "https://github.com/WathikAhmed/REST-API#readme",
   "dependencies": {
+    "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.10",
     "express": "^4.17.1"
   }
