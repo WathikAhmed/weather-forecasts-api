@@ -1,0 +1,23 @@
+{
+  "name": "REST-API",
+  "version": "1.0.0",
+  "description": "An architectural style for an application program interface that uses HTTP requests to access and use data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WathikAhmed/REST-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WathikAhmed/REST-API/issues"
+  },
+  "homepage": "https://github.com/WathikAhmed/REST-API#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
