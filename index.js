@@ -11,7 +11,7 @@ const app = express();
 const sources = [
     {
         name: 'Australian Government Bureau of Meteorology',
-        address: 'http://www.bom.gov.au',
+        address: 'http://www.bom.gov.au/nsw/forecasts/sydney.shtml?ref=hdr',
         base: ''
     }
 ]
@@ -23,8 +23,26 @@ sources.forEach(sources => {
         .then(response => {
             const html = response.data
             const $ = cheerio.load(html)
-
-            $('a:contains("Forecast")', html).each(function () {
+            $('div .day').attr('class', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+                $('h2', html).each(function () {
+                    const title = $(this).text()
+                    const url = $(this).attr('href')
+                    
+                    forecastArray.push({
+                        title,
+                        url: sources.address + url,
+                        source: sources.name
+                    })
+                })
+                forecastArray.push({
+                    title,
+                    url: sources.address + url,
+                    source: sources.name
+                })
+            })
+            /* $('a:contains("Sydney")', html).each(function () {
                 const title = $(this).text()
                 const url = $(this).attr('href')
                 
@@ -33,7 +51,7 @@ sources.forEach(sources => {
                     url: sources.address + url,
                     source: sources.name
                 })
-            })
+            }) */
 
         })
 })
