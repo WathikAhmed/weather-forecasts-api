@@ -11,7 +11,7 @@ const app = express();
 const sources = [
     {
         name: 'Australian Government Bureau of Meteorology',
-        address: 'http://www.bom.gov.au/',
+        address: 'http://www.bom.gov.au',
         base: ''
     }
 ]
@@ -30,7 +30,7 @@ sources.forEach(sources => {
                 
                 forecastArray.push({
                     title,
-                    url: sources.base + url,
+                    url: sources.address + url,
                     source: sources.name
                 })
             })
