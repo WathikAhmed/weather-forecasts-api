@@ -6,7 +6,37 @@ const axios = require('axios');         //  Promise based HTTP client for the br
 
 const app = express();
 
+
+
+const sources = [
+    {
+        name: 'Australian Government Bureau of Meteorology',
+        address: 'http://www.bom.gov.au/',
+        base: ''
+    }
+]
+
 const forecastArray=[];
+
+sources.forEach(sources => {
+    axios.get(sources.address)
+        .then(response => {
+            const html = response.data
+            const $ = cheerio.load(html)
+
+            $('a:contains("Forecast")', html).each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+                
+                forecastArray.push({
+                    title,
+                    url: sources.base + url,
+                    source: sources.name
+                })
+            })
+
+        })
+})
 
 app.listen(
     PORT,
@@ -18,22 +48,7 @@ app.get('/', (req,res) => {
 });
 
 app.get('/weather', (req,res) => {
-    axios.get('http://www.bom.gov.au/')
-    .then((response)=>{
-        const html = response.data
-        //console.log(html)
-        const $ = cheerio.load(html)
-
-        $('a:contains("Forecast")', html).each(function(){
-            const title = $(this).text()
-            const url = $(this).attr('href')
-
-            forecastArray.push({title,url})
-            
-            
-        })
-        res.json(forecastArray)
-    }).catch((err) => console.log(err))
+    res.json(forecastArray)
 });
 
 
