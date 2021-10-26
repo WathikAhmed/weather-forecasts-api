@@ -1,5 +1,5 @@
-const PORT = 8000;
-const express = require('express')();   //  Framework that provides a robust set of features for web and mobile applications. Creating a robust API is quick and easy
+const PORT = 4321;
+const express = require('express');   //  Framework that provides a robust set of features for web and mobile applications. Creating a robust API is quick and easy
 const cheerio = require('cheerio');     //  Cheerio parses markup and provides an API for traversing/manipulating the resulting data structure.
 const axios = require('axios');         //  Promise based HTTP client for the browser and node.js
 
@@ -10,6 +10,13 @@ app.listen(
     PORT,
     () => console.log(`Server running on PORT ${PORT}`)
 );
+
+app.get('/', (req,res) => {
+    res.json('Welcome to the Weather API')
+});
+
+
+
 
 app.get('/endpoint1', (req,res) => {
     res.status(200).send({
