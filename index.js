@@ -24,7 +24,7 @@ app.get('/weather', (req,res) => {
         //console.log(html)
         const $ = cheerio.load(html)
 
-        $('a:contains("Climate")', html).each(function(){
+        $('a:contains("Forecast")', html).each(function(){
             const title = $(this).text()
             const url = $(this).attr('href')
 
